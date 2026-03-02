@@ -5,5 +5,7 @@ mariadb:
     username: "golist"
     password: "golist"
   imageRegistry: public.ecr.aws
+  global:
+    imageRegistry: public.ecr.aws
   image:
     registry: public.ecr.aws
