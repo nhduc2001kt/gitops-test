@@ -6,10 +6,29 @@ metadata:
   name: database
   namespace: argocd
 spec:
+  # source:
+  #   path: apps/golist-db
+  #   repoURL: 'https://github.com/nhduc2001kt/gitops-test.git'
+  #   targetRevision: main
+
   source:
-    path: apps/golist-db
-    repoURL: 'https://github.com/nhduc2001kt/gitops-test.git'
-    targetRevision: main
+    chart: mariadb
+    repoURL: 'https://charts.bitnami.com/bitnami'
+    targetRevision: 11.1.0
+    helm:
+      releaseName: database
+      valuesObject:
+        architecture: "standalone"
+        auth:
+          database: "golist"
+          username: "golist"
+          password: "golist"
+        imageRegistry: public.ecr.aws
+        global:
+          imageRegistry: public.ecr.aws
+        image:
+          registry: public.ecr.aws
+
   destination:
     namespace: golist
     server: 'https://kubernetes.default.svc'
