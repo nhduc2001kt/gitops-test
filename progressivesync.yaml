@@ -7,12 +7,10 @@ spec:
   generators:
   - list:
       elements:
-      - srv: database
-        path: apps/golist-db/
-      - srv: backend
-        path: apps/golist-api/
-      - srv: frontend
-        path: apps/golist-frontend/
+      - srv: nginx
+        image: 1.29.5
+      - srv: nginx-2
+        image: 1.29.5
   strategy:
     type: RollingSync
     rollingSync:
@@ -21,17 +19,12 @@ spec:
             - key: golist-component
               operator: In
               values:
-                - database
+                - nginx
         - matchExpressions:
             - key: golist-component
               operator: In
               values:
-                - backend
-        - matchExpressions:
-            - key: golist-component
-              operator: In
-              values:
-                - frontend
+                - nginx-2
   template:
     metadata:
       name: '{{srv}}'
@@ -42,7 +35,18 @@ spec:
       source:
         repoURL: 'https://github.com/nhduc2001kt/gitops-test.git'
         targetRevision: main
-        path: '{{path}}'
+        path: 'apps/nginx'
+        helm:
+          releaseName: '{{srv}}'
+          valuesObject:          
+            nginx:
+              global:
+                security:
+                  allowInsecureImages: true`
+              image:
+                registry: public.ecr.aws
+                tag: '{{image}}'
+                debug: true
       destination:
         name: in-cluster
         namespace: golist
