@@ -6,11 +6,6 @@ metadata:
   name: database
   namespace: argocd
 spec:
-  # source:
-  #   path: apps/golist-db
-  #   repoURL: 'https://github.com/nhduc2001kt/gitops-test.git'
-  #   targetRevision: main
-
   source:
     chart: mariadb
     repoURL: 'https://charts.bitnami.com/bitnami'
@@ -23,11 +18,9 @@ spec:
           database: "golist"
           username: "golist"
           password: "golist"
-        imageRegistry: public.ecr.aws
-        global:
-          imageRegistry: public.ecr.aws
         image:
           registry: public.ecr.aws
+          # image: 10.6.8
 
   destination:
     namespace: golist
