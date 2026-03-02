@@ -3,24 +3,18 @@ kind: Application
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "1"
-  name: database
+  name: nginx
   namespace: argocd
 spec:
   source:
-    chart: mariadb
+    chart: nginx
     repoURL: 'https://charts.bitnami.com/bitnami'
-    targetRevision: 11.1.0
+    targetRevision: 22.5.3
     helm:
-      releaseName: database
-      valuesObject:
-        architecture: "standalone"
-        auth:
-          database: "golist"
-          username: "golist"
-          password: "golist"
+      releaseName: nginx
         image:
           registry: public.ecr.aws
-          # image: 10.6.8
+          tag: 1.28-trixie-otel
 
   destination:
     namespace: golist
