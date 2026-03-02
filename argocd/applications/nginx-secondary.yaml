@@ -7,8 +7,8 @@ metadata:
   namespace: argocd
 spec:
   source:
-    chart: nginx
-    repoURL: 'oci://registry-1.docker.io/bitnamicharts'
+    path: .
+    repoURL: 'oci://registry-1.docker.io/bitnamicharts/nginx'
     targetRevision: 22.5.3
     helm:
       releaseName: nginx-2
