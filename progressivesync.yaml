@@ -8,9 +8,9 @@ spec:
   - list:
       elements:
       - srv: nginx
-        image: 1.29.5-a
+        image: 1.29.4
       - srv: nginx-2
-        image: 1.29.5-a
+        image: 1.29.4
   strategy:
     type: RollingSync
     rollingSync:
