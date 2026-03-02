@@ -9,7 +9,7 @@ spec:
   source:
     chart: nginx
     repoURL: 'https://charts.bitnami.com/bitnami'
-    targetRevision: 22.5.3
+    targetRevision: 22.1.0
     helm:
       releaseName: nginx
       valuesObject:
