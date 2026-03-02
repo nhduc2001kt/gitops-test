@@ -7,15 +7,19 @@ metadata:
   namespace: argocd
 spec:
   source:
-    chart: nginx
-    repoURL: 'https://charts.bitnami.com/bitnami'
-    targetRevision: 22.1.0
+    path: apps/nginx
+    repoURL: 'https://github.com/nhduc2001kt/gitops-test.git'
+    targetRevision: main
     helm:
       releaseName: nginx
-      valuesObject:
-        image:
-          registry: public.ecr.aws
-          tag: 1.28-trixie-otel
+      valuesObject:          
+        nginx:
+          global:
+            security:
+              allowInsecureImages: true`
+          image:
+            registry: public.ecr.aws
+            debug: true
 
   destination:
     namespace: golist
