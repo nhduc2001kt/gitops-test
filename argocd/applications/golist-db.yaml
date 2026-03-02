@@ -20,7 +20,7 @@ spec:
           password: "golist"
         image:
           registry: public.ecr.aws
-          # image: 10.6.8
+          image: 10.6.8
 
   destination:
     namespace: golist
