@@ -12,6 +12,7 @@ spec:
     targetRevision: 22.5.3
     helm:
       releaseName: nginx-2
+      valuesObject:
         image:
           registry: public.ecr.aws
           tag: 1.28-trixie-otel
