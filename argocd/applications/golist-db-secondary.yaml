@@ -11,7 +11,7 @@ spec:
     repoURL: 'https://charts.bitnami.com/bitnami'
     targetRevision: 11.1.0
     helm:
-      releaseName: database
+      releaseName: database-secondary
       valuesObject:
         architecture: "standalone"
         auth:
